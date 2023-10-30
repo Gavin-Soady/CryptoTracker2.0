@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Crypto</string>
+    <string name="button_addCrypto">Add Crypto</string>
+    <string name="hint_cryptoTitle">Crypto Title</string>
+    <string name="hint_cryptoDescription">Description </string>
+    <string name="menu_addCrypto">Add</string>
+    <string name="menu_cancelCrypto">Cancel</string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="enter_crypto_title">Enter Crypto Title</string>
+    <string name="save_crypto">Save Crypto</string>
+    <string name="select_crypto_image">Select Crypto Image</string>
+</resources>
