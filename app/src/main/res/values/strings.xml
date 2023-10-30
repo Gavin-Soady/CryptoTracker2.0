@@ -11,4 +11,5 @@
     <string name="select_crypto_image">Select Crypto Image</string>
     <string name="change_image">Update Logo</string>
     <string name="change_crypto_image">Change Crypto Icon</string>
+    <string name="menu_deleteCrypto">Delete</string>
 </resources>

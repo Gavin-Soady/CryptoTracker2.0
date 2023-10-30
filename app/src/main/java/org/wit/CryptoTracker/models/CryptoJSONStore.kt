@@ -5,6 +5,8 @@ import android.net.Uri
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import org.wit.CryptoTracker.helpers.*
+import org.wit.CryptoTracker.models.CryptoModel
+import org.wit.CryptoTracker.models.CryptoStore
 import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
@@ -42,14 +44,24 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
 
 
     override fun update(crypto: CryptoModel) {
-        // todo
+        var foundcrypto: CryptoModel? = cryptos.find { p -> p.id == crypto.id }
+        if (foundcrypto != null) {
+            foundcrypto.title = crypto.title
+            foundcrypto.description = crypto.description
+            logAll()
+        }
+        serialize()
+    }
+
+    override fun delete(crypto: CryptoModel) {
+        cryptos.remove(crypto)
+        serialize()
     }
 
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(cryptos, listType)
         write(context, JSON_FILE, jsonString)
     }
-
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         cryptos = gsonBuilder.fromJson(jsonString, listType)

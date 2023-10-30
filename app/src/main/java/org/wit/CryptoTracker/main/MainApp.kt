@@ -1,7 +1,6 @@
 package org.wit.CryptoTracker.main
 
 import android.app.Application
-import org.wit.CryptoTracker.models.CryptoMemStore
 import org.wit.CryptoTracker.models.CryptoJSONStore
 import org.wit.CryptoTracker.models.CryptoStore
 import timber.log.Timber

@@ -8,7 +8,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class CryptoMemStore : CryptoStore {
+class CryptoMemStore(val crypto: CryptoModel) : CryptoStore {
 
     val cryptos = ArrayList<CryptoModel>()
 
@@ -29,6 +29,10 @@ class CryptoMemStore : CryptoStore {
             foundcrypto.description = crypto.description
             logAll()
         }
+    }
+
+    override fun delete(crypto: CryptoModel) {
+        cryptos.remove(crypto)
     }
 
     private fun logAll() {

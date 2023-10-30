@@ -15,6 +15,7 @@ import org.wit.CryptoTracker.helpers.showImagePicker
 import org.wit.CryptoTracker.main.MainApp
 import org.wit.CryptoTracker.models.CryptoModel
 import timber.log.Timber.Forest.i
+import java.nio.file.Files.delete
 
 class CryptoActivity : AppCompatActivity() {
 
@@ -86,6 +87,13 @@ class CryptoActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        when (item.itemId) {
+            R.id.item_delete -> {
+               finish()
+           }
+        }
+
         return super.onOptionsItemSelected(item)
     }
 
