@@ -1,12 +1,17 @@
 package org.wit.CryptoTracker.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.wit.CryptoTracker.R
 import org.wit.CryptoTracker.databinding.ActivityCryptoBinding
+import org.wit.CryptoTracker.helpers.showImagePicker
 import org.wit.CryptoTracker.main.MainApp
 import org.wit.CryptoTracker.models.CryptoModel
 import timber.log.Timber.Forest.i
@@ -14,6 +19,8 @@ import timber.log.Timber.Forest.i
 class CryptoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCryptoBinding
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+
     var crypto = CryptoModel()
     //val cryptos = ArrayList<CryptoModel>()
     lateinit var app: MainApp
@@ -38,6 +45,7 @@ class CryptoActivity : AppCompatActivity() {
             binding.cryptoTitle.setText(crypto.title)
             binding.description.setText(crypto.description)
             binding.btnAdd.setText(R.string.save_crypto)
+            binding.chooseImage.setText(R.string.change_image)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -60,7 +68,11 @@ class CryptoActivity : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener {
             i("Select image")
+            showImagePicker(imageIntentLauncher)
         }
+
+        registerImagePickerCallback()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,5 +87,24 @@ class CryptoActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                            crypto.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(crypto.image)
+                                .into(binding.cryptoImage)
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 }
