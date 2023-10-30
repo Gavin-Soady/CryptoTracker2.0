@@ -3,6 +3,7 @@ package org.wit.CryptoTracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.wit.CryptoTracker.databinding.CardCryptoBinding
 import org.wit.CryptoTracker.models.CryptoModel
 
@@ -34,6 +35,7 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
         fun bind(crypto: CryptoModel, listener: CryptoListener) {
             binding.cryptoTitle.text = crypto.title
             binding.description.text = crypto.description
+            Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCryptoClick(crypto) }
         }
     }

@@ -68,7 +68,7 @@ class CryptoActivity : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener {
             i("Select image")
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher,this)
         }
 
         registerImagePickerCallback()
@@ -97,10 +97,16 @@ class CryptoActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            crypto.image = result.data!!.data!!
+
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            crypto.image = image
+
                             Picasso.get()
                                 .load(crypto.image)
                                 .into(binding.cryptoImage)
+                            binding.chooseImage.setText(R.string.change_crypto_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

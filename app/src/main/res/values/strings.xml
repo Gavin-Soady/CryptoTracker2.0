@@ -10,4 +10,5 @@
     <string name="save_crypto">Save Crypto</string>
     <string name="select_crypto_image">Select Crypto Image</string>
     <string name="change_image">Update Logo</string>
+    <string name="change_crypto_image">Change Crypto Icon</string>
 </resources>
