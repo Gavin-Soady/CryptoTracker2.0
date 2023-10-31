@@ -3,6 +3,7 @@ package org.wit.CryptoTracker.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
@@ -44,14 +45,21 @@ class CryptoActivity : AppCompatActivity() {
             edit = true
             crypto = intent.extras?.getParcelable("crypto_edit")!!
             binding.cryptoTitle.setText(crypto.title)
-            binding.description.setText(crypto.description)
+            binding.amount.setText(crypto.amount)
+            binding.value.setText(crypto.value)
             binding.btnAdd.setText(R.string.save_crypto)
             binding.chooseImage.setText(R.string.change_image)
         }
 
         binding.btnAdd.setOnClickListener() {
             crypto.title = binding.cryptoTitle.text.toString()
-            crypto.description = binding.description.text.toString()
+            crypto.amount = binding.amount.text.toString()
+            crypto.value= binding.value.text.toString()
+            val amount = (crypto.amount).toFloat()
+            val value = (crypto.value).toFloat()
+            val total = amount * value
+            crypto.total = total.toString()
+
             if (crypto.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_crypto_title, Snackbar.LENGTH_LONG)
                     .show()
@@ -122,3 +130,5 @@ class CryptoActivity : AppCompatActivity() {
             }
     }
 }
+
+

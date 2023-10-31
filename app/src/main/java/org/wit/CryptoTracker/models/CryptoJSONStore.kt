@@ -48,6 +48,9 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
         if (foundcrypto != null) {
             foundcrypto.title = crypto.title
             foundcrypto.description = crypto.description
+            foundcrypto.value = crypto.value
+            foundcrypto.amount = crypto.amount
+            foundcrypto.total = crypto.total
             logAll()
         }
         serialize()
