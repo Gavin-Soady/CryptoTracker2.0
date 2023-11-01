@@ -34,9 +34,10 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
 
         fun bind(crypto: CryptoModel, listener: CryptoListener) {
             binding.cryptoTitle.text = crypto.title
-            binding.value.text = "Value: "+ crypto.value
+           // binding.value.text = "Value: "+ crypto.value
             binding.amount.text = "Amount: "+ crypto.amount
             binding.total.text = "Total: €" + crypto.total
+
 
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCryptoClick(crypto) }

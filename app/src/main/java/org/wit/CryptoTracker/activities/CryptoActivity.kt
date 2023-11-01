@@ -26,11 +26,12 @@ class CryptoActivity : AppCompatActivity() {
     var crypto = CryptoModel()
     //val cryptos = ArrayList<CryptoModel>()
     lateinit var app: MainApp
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var edit = false
+        //var edit = false
 
         binding = ActivityCryptoBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,20 +46,29 @@ class CryptoActivity : AppCompatActivity() {
             edit = true
             crypto = intent.extras?.getParcelable("crypto_edit")!!
             binding.cryptoTitle.setText(crypto.title)
-            binding.amount.setText(crypto.amount)
-            binding.value.setText(crypto.value)
+            binding.amount.setText(crypto.amount.toString())
+            //binding.amount.setText(crypto.amount)
+            binding.value.setText(crypto.value.toString())
+            //binding.value.setText(crypto.value)
             binding.btnAdd.setText(R.string.save_crypto)
             binding.chooseImage.setText(R.string.change_image)
         }
 
         binding.btnAdd.setOnClickListener() {
             crypto.title = binding.cryptoTitle.text.toString()
-            crypto.amount = binding.amount.text.toString()
-            crypto.value= binding.value.text.toString()
-            val amount = (crypto.amount).toFloat()
-            val value = (crypto.value).toFloat()
-            val total = amount * value
-            crypto.total = total.toString()
+
+           // crypto.amount = binding.amount.text.toString()
+           // crypto.value= binding.value.text.toString()
+           // var value = binding.value.text.toString().toLong()
+           // var amount = binding.amount.text.toString().toLong()
+           // crypto.total = (value * amount).toString()
+
+            crypto.amount = binding.amount.text.toString().toLong()
+            crypto.value= binding.value.text.toString().toLong()
+            var amountC = binding.amount.text.toString().toLong()
+            var valueC = binding.value.text.toString().toLong()
+            var totalC = amountC * valueC
+            crypto.total = totalC
 
             if (crypto.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_crypto_title, Snackbar.LENGTH_LONG)
@@ -86,6 +96,7 @@ class CryptoActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_crypto, menu)
+        if (edit) menu.getItem(1).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -98,7 +109,8 @@ class CryptoActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.item_delete -> {
-               finish()
+                app.cryptos.delete(crypto)
+                finish()
            }
         }
 
