@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.wit.CryptoTracker.databinding.CardCryptoBinding
 import org.wit.CryptoTracker.models.CryptoModel
+import java.text.DecimalFormat
 
 interface CryptoListener {
     fun onCryptoClick(crypto: CryptoModel)
@@ -35,9 +36,13 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
         fun bind(crypto: CryptoModel, listener: CryptoListener) {
             binding.cryptoTitle.text = crypto.title
            // binding.value.text = "Value: "+ crypto.value
-            binding.amount.text = "Amount: "+ crypto.amount
-            binding.total.text = "Total: €" + crypto.total
-
+            val df = DecimalFormat("#,###.00")
+            val amount = df.format(crypto.amount)
+            val total = df.format(crypto.total)
+            val fAmount = "Amount: $amount"
+            val fTotal = "Total: €$total"
+            binding.amount.text = fAmount
+            binding.total.text = fTotal
 
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCryptoClick(crypto) }

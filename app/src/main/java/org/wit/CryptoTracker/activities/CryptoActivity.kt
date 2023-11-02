@@ -1,9 +1,9 @@
 package org.wit.CryptoTracker.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
@@ -16,7 +16,8 @@ import org.wit.CryptoTracker.helpers.showImagePicker
 import org.wit.CryptoTracker.main.MainApp
 import org.wit.CryptoTracker.models.CryptoModel
 import timber.log.Timber.Forest.i
-import java.nio.file.Files.delete
+
+
 
 class CryptoActivity : AppCompatActivity() {
 
@@ -52,10 +53,15 @@ class CryptoActivity : AppCompatActivity() {
             //binding.value.setText(crypto.value)
             binding.btnAdd.setText(R.string.save_crypto)
             binding.chooseImage.setText(R.string.change_image)
+            Picasso.get()
+                .load(crypto.image)
+                .into(binding.cryptoImage)
+            if (crypto.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_crypto_image)
+            }
         }
 
         binding.btnAdd.setOnClickListener() {
-            crypto.title = binding.cryptoTitle.text.toString()
 
            // crypto.amount = binding.amount.text.toString()
            // crypto.value= binding.value.text.toString()
@@ -63,11 +69,12 @@ class CryptoActivity : AppCompatActivity() {
            // var amount = binding.amount.text.toString().toLong()
            // crypto.total = (value * amount).toString()
 
-            crypto.amount = binding.amount.text.toString().toLong()
-            crypto.value= binding.value.text.toString().toLong()
-            var amountC = binding.amount.text.toString().toLong()
-            var valueC = binding.value.text.toString().toLong()
-            var totalC = amountC * valueC
+            crypto.title = binding.cryptoTitle.text.toString()
+            crypto.amount = binding.amount.text.toString().toDouble()
+            crypto.value= binding.value.text.toString().toDouble()
+            val amountC = binding.amount.text.toString().toDouble()
+            val valueC = binding.value.text.toString().toDouble()
+            val totalC = amountC * valueC
             crypto.total = totalC
 
             if (crypto.title.isEmpty()) {
