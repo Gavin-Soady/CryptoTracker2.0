@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crypto</string>
+    <string name="app_name">Crypto Tracker 2.0</string>
     <string name="button_addCrypto">Add Crypto</string>
     <string name="hint_cryptoTitle">Crypto Title</string>
     <string name="hint_cryptoDescription">Description </string>
