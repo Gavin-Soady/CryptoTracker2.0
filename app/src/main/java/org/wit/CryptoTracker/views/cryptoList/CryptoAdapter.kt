@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.adapters
+package org.wit.CryptoTracker.views.cryptoList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,11 +9,12 @@ import org.wit.CryptoTracker.models.CryptoModel
 import java.text.DecimalFormat
 
 interface CryptoListener {
-    fun onCryptoClick(crypto: CryptoModel)
+    fun onCryptoClick(crypto: CryptoModel, adapterPosition: Int)
 }
 
 class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
-                                   private val listener: CryptoListener) :
+                                   private val listener: CryptoListener
+) :
         RecyclerView.Adapter<CryptoAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -45,7 +46,7 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
             binding.total.text = fTotal
 
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onCryptoClick(crypto) }
+            binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
         }
     }
 }

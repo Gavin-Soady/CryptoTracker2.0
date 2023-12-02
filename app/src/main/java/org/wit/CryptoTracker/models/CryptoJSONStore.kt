@@ -36,6 +36,11 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
         return cryptos
     }
 
+     override fun findById(id:Long) : CryptoModel? {
+        val foundPlacemark: CryptoModel? = cryptos.find { it.id == id }
+        return foundPlacemark
+    }
+
     override fun create(crypto: CryptoModel) {
         crypto.id = generateRandomId()
         cryptos.add(crypto)
@@ -51,6 +56,8 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
             foundcrypto.value = crypto.value
             foundcrypto.amount = crypto.amount
             foundcrypto.total = crypto.total
+            foundcrypto.image = crypto.image
+
             logAll()
         }
         serialize()

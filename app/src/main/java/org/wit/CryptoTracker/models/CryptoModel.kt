@@ -11,4 +11,13 @@ data class CryptoModel(   var id: Long = 0,
                           var image: Uri = Uri.EMPTY,
                           var amount: Double = 0.00,
                           var value: Double = 0.00,
-                          var total: Double = 0.00) : Parcelable
+                          var total: Double = 0.00,
+                          var lat: Double = 0.00,
+                          var lng: Double = 0.00,
+                          var zoom: Float = 0F ) : Parcelable
+
+
+@Parcelize
+data class Location(var lat: Double = 0.0,
+                    var lng: Double = 0.0,
+                    var zoom: Float = 0f) : Parcelable

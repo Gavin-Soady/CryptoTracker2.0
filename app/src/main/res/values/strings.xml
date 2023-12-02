@@ -14,4 +14,8 @@
     <string name="menu_deleteCrypto">Delete</string>
     <string name="hint_cryptoAmount">Crypto Amount</string>
     <string name="hint_cryptoValue">Cryto Value</string>
+    <string name="title_activity_map">Crypto Map</string>
+    <string name="menu_addPlacemark">Add Crypto</string>
+    <string name="button_location">Set Location</string>
 </resources>
+

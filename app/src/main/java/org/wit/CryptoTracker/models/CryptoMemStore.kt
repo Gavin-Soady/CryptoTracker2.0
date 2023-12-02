@@ -15,6 +15,10 @@ class CryptoMemStore(val crypto: CryptoModel) : CryptoStore {
     override fun findAll(): List<CryptoModel> {
         return cryptos
     }
+    override fun findById(id:Long) : CryptoModel? {
+        val foundCrypto: CryptoModel? = cryptos.find { it.id == id }
+        return foundCrypto
+    }
 
     override fun create(crypto: CryptoModel) {
         crypto.id = getId()
