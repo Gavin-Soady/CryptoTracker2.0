@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.models
+package org.wit.cryptoTracker.models
 
 import timber.log.Timber.Forest.i
 

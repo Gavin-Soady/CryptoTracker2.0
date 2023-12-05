@@ -1,20 +1,22 @@
-package org.wit.CryptoTracker.views.editLocation
+package org.wit.cryptoTracker.views.editLocation
 
 import android.app.Activity
 import android.content.Intent
+import android.location.Location
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import org.wit.CryptoTracker.models.Location
+
+import org.wit.cryptoTracker.models.LocationModel
 
 class EditLocationPresenter (val view: EditLocationView) {
 
-    var location = Location()
+    var location = LocationModel()
 
     init {
-        location = view.intent.extras?.getParcelable<Location>("location")!!
+        location = view.intent.extras?.getParcelable<LocationModel>("location")!!
     }
 
     fun initMap(map: GoogleMap) {

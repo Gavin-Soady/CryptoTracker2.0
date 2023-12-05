@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.helpers
+package org.wit.cryptoTracker.helpers
 
 import android.content.Context
 import timber.log.Timber.Forest.e

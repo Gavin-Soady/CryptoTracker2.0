@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "org.wit.CryptoTracker"
+    namespace = "org.wit.cryptoTracker"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "org.wit.CryptoTracker"
+        applicationId = "org.wit.cryptoTracker"
         minSdk = 30
         targetSdk = 34
         versionCode = 1

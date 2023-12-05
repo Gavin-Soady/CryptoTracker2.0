@@ -1,13 +1,13 @@
-package org.wit.CryptoTracker.views.cryptoList
+package org.wit.cryptoTracker.views.cryptoList
 
 import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import org.wit.CryptoTracker.activities.CryptoMapsActivity
-import org.wit.CryptoTracker.main.MainApp
-import org.wit.CryptoTracker.models.CryptoModel
-import org.wit.CryptoTracker.views.crypto.CryptoView
+import org.wit.cryptoTracker.activities.CryptoMapsActivity
+import org.wit.cryptoTracker.main.MainApp
+import org.wit.cryptoTracker.models.CryptoModel
+import org.wit.cryptoTracker.views.crypto.CryptoView
 
 class CryptoListPresenter(val view: CryptoListView) {
 

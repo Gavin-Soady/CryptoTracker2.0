@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.activities
+package org.wit.cryptoTracker.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
-import org.wit.CryptoTracker.databinding.ActivityCryptoMapsBinding
-import org.wit.CryptoTracker.databinding.ContentCryptoMapsBinding
-import org.wit.CryptoTracker.main.MainApp
-import org.wit.CryptoTracker.models.CryptoModel
+import org.wit.cryptoTracker.databinding.ActivityCryptoMapsBinding
+import org.wit.cryptoTracker.databinding.ContentCryptoMapsBinding
+import org.wit.cryptoTracker.main.MainApp
 
 class CryptoMapsActivity : AppCompatActivity(),GoogleMap.OnMarkerClickListener {
 

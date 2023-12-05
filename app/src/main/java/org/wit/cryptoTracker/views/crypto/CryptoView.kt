@@ -1,15 +1,16 @@
-package org.wit.CryptoTracker.views.crypto
+package org.wit.cryptoTracker.views.crypto
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import org.wit.CryptoTracker.R
-import org.wit.CryptoTracker.databinding.ActivityCryptoBinding
-import org.wit.CryptoTracker.models.CryptoModel
+import org.wit.cryptoTracker.R
+import org.wit.cryptoTracker.databinding.ActivityCryptoBinding
+import org.wit.cryptoTracker.models.CryptoModel
 import timber.log.Timber.Forest.i
-
 
 
 class CryptoView : AppCompatActivity() {
@@ -49,7 +50,27 @@ class CryptoView : AppCompatActivity() {
             presenter.doSetLocation()
         }
 
-        fun onOptionsItemSelected(item: MenuItem): Boolean {
+        binding.btnAdd.setOnClickListener {
+            if (binding.cryptoTitle.text.toString().isEmpty()) {
+                Snackbar.make(binding.root, R.string.enter_crypto_title, Snackbar.LENGTH_LONG)
+                    .show()
+            } else {
+                var title = binding.cryptoTitle.text.toString()
+                var value = binding.value.text.toString().toDouble()
+                var amount = binding.amount.text.toString().toDouble()
+                presenter.doAddOrSave(title,value, amount)
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_crypto, menu)
+        val deleteMenu: MenuItem = menu.findItem(R.id.item_delete)
+        deleteMenu.isVisible = presenter.edit
+        return super.onCreateOptionsMenu(menu)
+    }
+
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.item_delete -> {
                     presenter.doDelete()
@@ -85,7 +106,5 @@ class CryptoView : AppCompatActivity() {
     }
 
 
-
-}
 
 

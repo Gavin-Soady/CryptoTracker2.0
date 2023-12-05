@@ -1,15 +1,14 @@
-package org.wit.CryptoTracker.views.cryptoList
+package org.wit.cryptoTracker.views.cryptoList
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.wit.CryptoTracker.R
-import org.wit.CryptoTracker.databinding.ActivityCryptoListBinding
-import org.wit.CryptoTracker.main.MainApp
-import org.wit.CryptoTracker.models.CryptoModel
-import org.wit.CryptoTracker.views.cryptoList.CryptoAdapter
+import org.wit.cryptoTracker.R
+import org.wit.cryptoTracker.databinding.ActivityCryptoListBinding
+import org.wit.cryptoTracker.main.MainApp
+import org.wit.cryptoTracker.models.CryptoModel
 
 
 class CryptoListView : AppCompatActivity(), CryptoListener {

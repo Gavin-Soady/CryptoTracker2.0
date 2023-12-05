@@ -1,6 +1,4 @@
-package org.wit.CryptoTracker.models
-
-import org.wit.CryptoTracker.models.CryptoModel
+package org.wit.cryptoTracker.models
 
 interface CryptoStore {
     //abstract val crypto: CryptoModel

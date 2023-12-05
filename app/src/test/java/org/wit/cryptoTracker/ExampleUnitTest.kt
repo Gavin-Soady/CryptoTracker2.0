@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker
+package org.wit.cryptoTracker
 
 import org.junit.Test
 

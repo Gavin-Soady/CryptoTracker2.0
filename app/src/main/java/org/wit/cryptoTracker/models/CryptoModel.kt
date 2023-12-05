@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.models
+package org.wit.cryptoTracker.models
 
 import android.net.Uri
 import android.os.Parcelable
@@ -15,9 +15,7 @@ data class CryptoModel(   var id: Long = 0,
                           var lat: Double = 0.00,
                           var lng: Double = 0.00,
                           var zoom: Float = 0F ) : Parcelable
-
-
 @Parcelize
-data class Location(var lat: Double = 0.0,
+data class LocationModel(var lat: Double = 0.0,
                     var lng: Double = 0.0,
                     var zoom: Float = 0f) : Parcelable

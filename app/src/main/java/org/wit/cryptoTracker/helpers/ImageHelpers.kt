@@ -1,10 +1,9 @@
-package org.wit.CryptoTracker.helpers
+package org.wit.cryptoTracker.helpers
 
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
-import org.wit.CryptoTracker.R
-
+import org.wit.cryptoTracker.R
 
 fun showImagePicker(intentLauncher: ActivityResultLauncher<Intent>, context: Context) {
     var imagePickerTargetIntent = Intent()

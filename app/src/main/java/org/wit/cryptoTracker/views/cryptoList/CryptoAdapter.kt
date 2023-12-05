@@ -1,11 +1,11 @@
-package org.wit.CryptoTracker.views.cryptoList
+package org.wit.cryptoTracker.views.cryptoList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import org.wit.CryptoTracker.databinding.CardCryptoBinding
-import org.wit.CryptoTracker.models.CryptoModel
+import org.wit.cryptoTracker.databinding.CardCryptoBinding
+import org.wit.cryptoTracker.models.CryptoModel
 import java.text.DecimalFormat
 
 interface CryptoListener {

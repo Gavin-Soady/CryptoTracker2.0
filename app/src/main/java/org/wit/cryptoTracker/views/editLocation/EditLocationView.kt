@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.views.editLocation
+package org.wit.cryptoTracker.views.editLocation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
-import org.wit.CryptoTracker.R
-import org.wit.CryptoTracker.models.Location
+import org.wit.cryptoTracker.R
+import org.wit.cryptoTracker.models.LocationModel
 
 class EditLocationView : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMarkerDragListener,
@@ -15,13 +15,13 @@ class EditLocationView : AppCompatActivity(), OnMapReadyCallback,
 
     private lateinit var map: GoogleMap
     lateinit var presenter: EditLocationPresenter
-    var location = Location()
+    var location = LocationModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
         presenter = EditLocationPresenter(this)
-        location = intent.extras?.getParcelable<Location>("location")!!
+        location = intent.extras?.getParcelable<LocationModel>("location")!!
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

@@ -1,12 +1,10 @@
-package org.wit.CryptoTracker.models
+package org.wit.cryptoTracker.models
 
 import android.content.Context
 import android.net.Uri
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
-import org.wit.CryptoTracker.helpers.*
-import org.wit.CryptoTracker.models.CryptoModel
-import org.wit.CryptoTracker.models.CryptoStore
+import org.wit.cryptoTracker.helpers.*
 import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
@@ -49,7 +47,8 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
 
 
     override fun update(crypto: CryptoModel) {
-        var foundcrypto: CryptoModel? = cryptos.find { p -> p.id == crypto.id }
+        val cryptoList = findAll() as ArrayList<CryptoModel>
+        var foundcrypto: CryptoModel? = cryptoList.find { p -> p.id == crypto.id }
         if (foundcrypto != null) {
             foundcrypto.title = crypto.title
             foundcrypto.description = crypto.description

@@ -1,4 +1,4 @@
-package org.wit.CryptoTracker.views.crypto
+package org.wit.cryptoTracker.views.crypto
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -7,12 +7,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.github.ajalt.timberkt.Timber
-import org.wit.CryptoTracker.views.editLocation.EditLocationView
-import org.wit.CryptoTracker.databinding.ActivityCryptoBinding
-import org.wit.CryptoTracker.helpers.showImagePicker
-import org.wit.CryptoTracker.main.MainApp
-import org.wit.CryptoTracker.models.CryptoModel
-
+import org.wit.cryptoTracker.databinding.ActivityCryptoBinding
+import org.wit.cryptoTracker.views.editLocation.EditLocationView
+import org.wit.cryptoTracker.helpers.showImagePicker
+import org.wit.cryptoTracker.main.MainApp
+import org.wit.cryptoTracker.models.CryptoModel
+import org.wit.cryptoTracker.models.LocationModel
 
 
 class CryptoPresenter(private val view: CryptoView) {
@@ -60,7 +60,7 @@ class CryptoPresenter(private val view: CryptoView) {
     }
 
     fun doSetLocation() {
-        val location = Location(52.245696, -7.139102, 15f)
+        val location = LocationModel(88.3,-12.5, 14f)
         if (crypto.zoom != 0f) {
             location.lat =  crypto.lat
             location.lng = crypto.lng
@@ -105,12 +105,16 @@ private fun registerMapCallback() {
                         Timber.i("Got Location ${result.data.toString()}")
                         val location = result.data!!.extras?.getParcelable<Location>("location")!!
                         Timber.i("Location == $location")
-                        crypto.lat = location.lat
-                        crypto.lng = location.lng
-                        crypto.zoom = location.zoom
+                        crypto.lat = 45.234
+                        crypto.lng = -6.56
+                        crypto.zoom = 14f
                     } // end of if  
                 }
                 AppCompatActivity.RESULT_CANCELED -> { } else -> { }
             }            }    }
+
+}
+
+private fun Timber.i(t: String) {
 
 }
