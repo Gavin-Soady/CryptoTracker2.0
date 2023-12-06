@@ -36,15 +36,16 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
 
         fun bind(crypto: CryptoModel, listener: CryptoListener) {
             binding.cryptoTitle.text = crypto.title
-           // binding.value.text = "Value: "+ crypto.value
             val df = DecimalFormat("#,###.00")
             val amount = df.format(crypto.amount)
             val total = df.format(crypto.total)
+            val value = df.format(crypto.value)
             val fAmount = "Amount: $amount"
             val fTotal = "Total: €$total"
+            val fValue = "Price: €$value"
             binding.amount.text = fAmount
             binding.total.text = fTotal
-
+            binding.value.text = fValue
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
         }

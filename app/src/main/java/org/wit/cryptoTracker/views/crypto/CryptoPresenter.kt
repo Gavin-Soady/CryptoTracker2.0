@@ -38,6 +38,7 @@ class CryptoPresenter(private val view: CryptoView) {
         crypto.title = title
         crypto.value = value
         crypto.amount = amount
+        crypto.total = value * amount
 
         if (edit) {
             app.cryptos.update(crypto)

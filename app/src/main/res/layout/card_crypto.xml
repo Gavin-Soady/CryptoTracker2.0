@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/change_crypto_image"
@@ -28,9 +28,10 @@
 
         <TextView
             android:id="@+id/cryptoTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
             android:textAlignment="viewStart"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +39,7 @@
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="A Title" />
+
 
         <TextView
             android:id="@+id/amount"
@@ -47,34 +49,36 @@
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"
-            app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@id/cryptoTitle"
+            app:layout_constraintStart_toEndOf="@+id/cryptoTitle"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Value" />
-        <!--  <TextView
-              android:id="@+id/value"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="16dp"
-              android:layout_marginLeft="14dp"
-              android:textAlignment="viewStart"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintHorizontal_bias="0.052"
-              app:layout_constraintStart_toEndOf="@+id/cryptoTitle"
-              app:layout_constraintTop_toTopOf="@+id/cryptoTitle"
-              tools:text="Amount" /> -->
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="0dp"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toEndOf="@+id/cryptoTitle"
+            app:layout_constraintTop_toBottomOf="@id/amount"
+            tools:text="Amount" />
 
 
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textAlignment="viewStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toEndOf="@+id/imageIcon"
-        app:layout_constraintTop_toBottomOf="@+id/amount"
-        tools:text="Amount" />
+
+        <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintStart_toEndOf="@+id/cryptoTitle"
+                app:layout_constraintTop_toBottomOf="@+id/value"
+                tools:text="Amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
