@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/crypto_listFragment">
+
+    <fragment
+        android:id="@+id/cryptoFragment"
+        android:name="org.wit.cryptoTracker.CryptoFragment"
+        android:label="fragment_crypto"
+        tools:layout="@layout/fragment_crypto" />
+    <fragment
+        android:id="@+id/crypto_listFragment"
+        android:name="org.wit.cryptoTracker.CryptoListFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_crypto_list" />
+</navigation>
