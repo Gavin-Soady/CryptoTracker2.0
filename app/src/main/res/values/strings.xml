@@ -19,5 +19,12 @@
     <string name="button_location">Set Location</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="crypto_list">CryptoList</string>
+    <string name="action_AddCrypto">Add Crypto</string>
+    <string name="group_communicate">Connect Section\n</string>
+    <string name="action_share">Share</string>
+    <string name="action_send">Send</string>
+    <string name="nav_header_desc">Nav Header</string>
+    <string name="nav_header_title">Nav Header Title</string>
 </resources>
 
