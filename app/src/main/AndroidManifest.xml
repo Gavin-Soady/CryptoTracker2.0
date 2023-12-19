@@ -24,8 +24,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
         </activity>
-        <!--<activity
+        <!--
+        <activity
             android:name=".views.cryptoList.CryptoListView"
             android:exported="true">
             <intent-filter>
@@ -37,16 +42,13 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>-->
+        </activity>
+
         <activity android:name=".views.crypto.CryptoView">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".views.editLocation.EditLocationView"
-            android:label="@string/title_activity_map"></activity>
-
+            android:label="@string/title_activity_map" />-->
     </application>
 
 </manifest>

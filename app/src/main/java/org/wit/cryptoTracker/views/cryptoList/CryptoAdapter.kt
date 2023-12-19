@@ -12,8 +12,12 @@ interface CryptoListener {
     fun onCryptoClick(crypto: CryptoModel, adapterPosition: Int)
 }
 
-class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
-                                   private val listener: CryptoListener
+//class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
+                                   //private val listener: CryptoListener
+//) :
+
+class CryptoAdapter constructor(private var cryptos: List<CryptoModel>
+                                //private val listener: CryptoListener
 ) :
         RecyclerView.Adapter<CryptoAdapter.MainHolder>() {
 
@@ -24,9 +28,14 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
         return MainHolder(binding)
     }
 
+   // override fun onBindViewHolder(holder: MainHolder, position: Int) {
+      //  val crypto = cryptos[holder.adapterPosition]
+       // holder.bind(crypto, listener)
+   // }
+
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val crypto = cryptos[holder.adapterPosition]
-        holder.bind(crypto, listener)
+    val crypto = cryptos[holder.adapterPosition]
+    holder.bind(crypto)
     }
 
     override fun getItemCount(): Int = cryptos.size
@@ -34,7 +43,7 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
     class MainHolder(private val binding : CardCryptoBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(crypto: CryptoModel, listener: CryptoListener) {
+        fun bind(crypto: CryptoModel) {
             binding.cryptoTitle.text = crypto.title
             val df = DecimalFormat("#,###.00")
             val amount = df.format(crypto.amount)
@@ -47,7 +56,7 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>,
             binding.total.text = fTotal
             binding.value.text = fValue
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
+            //binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
         }
     }
 }

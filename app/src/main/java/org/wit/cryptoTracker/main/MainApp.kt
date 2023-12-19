@@ -10,7 +10,6 @@ class MainApp : Application() {
 
     //val cryptos = ArrayList<CryptoModel>()
     //val cryptos = CryptoMemStore()
-
     lateinit var cryptos: CryptoStore
 
     override fun onCreate() {

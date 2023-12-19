@@ -34,7 +34,7 @@ class CryptoPresenter(private val view: CryptoView) {
         registerImagePickerCallback()
         registerMapCallback()
     }
-    fun doAddOrSave(title: String, value: Double, amount: Double) {
+    fun doAddOrSave(amount1: Any, title: String, value: Double, amount: Double) {
         crypto.title = title
         crypto.value = value
         crypto.amount = amount
@@ -116,6 +116,6 @@ private fun registerMapCallback() {
 
 }
 
-private fun Timber.i(t: String) {
+fun Timber.i(t: String) {
 
 }

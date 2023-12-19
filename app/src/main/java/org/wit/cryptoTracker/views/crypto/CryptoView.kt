@@ -58,19 +58,19 @@ class CryptoView : AppCompatActivity() {
                 var title = binding.cryptoTitle.text.toString()
                 var value = binding.value.text.toString().toDouble()
                 var amount = binding.amount.text.toString().toDouble()
-                presenter.doAddOrSave(title,value, amount)
+                presenter.doAddOrSave(amount, title, value, amount)
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_crypto, menu)
-        val deleteMenu: MenuItem = menu.findItem(R.id.item_delete)
-        deleteMenu.isVisible = presenter.edit
+       // val deleteMenu: MenuItem = menu.findItem(R.id.item_delete)
+       // deleteMenu.isVisible = presenter.edit
         return super.onCreateOptionsMenu(menu)
     }
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+       override fun onOptionsItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.item_delete -> {
                     presenter.doDelete()

@@ -3,16 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/crypto_listFragment">
+    app:startDestination="@id/cryptoFragment">
 
     <fragment
         android:id="@+id/cryptoFragment"
-        android:name="org.wit.cryptoTracker.CryptoFragment"
-        android:label="fragment_crypto"
-        tools:layout="@layout/fragment_crypto" />
+        android:name="org.wit.cryptoTracker.views.fragments.CryptoFragment"
+        android:label="Add Crypto"
+        tools:layout="@layout/fragment_crypto" >
+        <action
+            android:id="@+id/action_cryptoFragment_to_cryptoListFragment"
+            app:destination="@+id/cryptoListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <fragment
-        android:id="@+id/crypto_listFragment"
-        android:name="org.wit.cryptoTracker.CryptoListFragment"
-        android:label="fragment_report"
-        tools:layout="@layout/fragment_crypto_list" />
+        android:id="@+id/cryptoListFragment"
+        android:name="org.wit.cryptoTracker.views.fragments.CryptoListFragment"
+        android:label="Crypto List"
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_cryptoListFragment_to_cryptoFragment"
+            app:destination="@+id/cryptoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />/>
+    </fragment>
 </navigation>

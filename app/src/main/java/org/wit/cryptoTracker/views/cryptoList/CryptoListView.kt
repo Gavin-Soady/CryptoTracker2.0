@@ -50,8 +50,13 @@ class CryptoListView : AppCompatActivity(), CryptoListener {
         presenter.doEditCrypto(crypto, this.position)
     }
 
+   // private fun loadCryptos() {
+      //  binding.recyclerView.adapter = CryptoAdapter(presenter.getCryptos(), this)
+      //  onRefresh()
+   // }
+
     private fun loadCryptos() {
-        binding.recyclerView.adapter = CryptoAdapter(presenter.getCryptos(), this)
+        binding.recyclerView.adapter = CryptoAdapter(presenter.getCryptos())
         onRefresh()
     }
 
