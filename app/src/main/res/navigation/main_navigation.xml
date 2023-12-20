@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cryptoFragment"
-        android:name="org.wit.cryptoTracker.views.fragments.CryptoFragment"
+        android:name="org.wit.cryptoTracker.ui.crypto.CryptoFragment"
         android:label="Add Crypto"
         tools:layout="@layout/fragment_crypto" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/cryptoListFragment"
-        android:name="org.wit.cryptoTracker.views.fragments.CryptoListFragment"
+        android:name="org.wit.cryptoTracker.ui.cryptoList.CryptoListFragment"
         android:label="Crypto List"
         tools:layout="@layout/fragment_report" >
         <action

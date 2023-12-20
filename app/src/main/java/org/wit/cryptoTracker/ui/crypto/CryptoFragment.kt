@@ -1,4 +1,4 @@
-package org.wit.cryptoTracker.views.fragments
+package org.wit.cryptoTracker.ui.crypto
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI

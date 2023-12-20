@@ -1,4 +1,4 @@
-package org.wit.cryptoTracker.views.fragments
+package org.wit.cryptoTracker.ui.cryptoList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.cryptoTracker.R
 import org.wit.cryptoTracker.databinding.FragmentReportBinding
 import org.wit.cryptoTracker.main.MainApp
-import org.wit.cryptoTracker.models.CryptoModel
 import org.wit.cryptoTracker.views.cryptoList.CryptoAdapter
 
 /**
