@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/cryptoFragment">
+    app:startDestination="@id/cryptoListFragment">
 
     <fragment
         android:id="@+id/cryptoFragment"
-        android:name="org.wit.cryptoTracker.views.fragments.CryptoFragment"
+        android:name="org.wit.cryptoTracker.ui.crypto.CryptoFragment"
         android:label="Add Crypto"
         tools:layout="@layout/fragment_crypto" >
         <action
@@ -18,12 +18,14 @@
     </fragment>
     <fragment
         android:id="@+id/cryptoListFragment"
-        android:name="org.wit.cryptoTracker.views.fragments.CryptoListFragment"
+        android:name="org.wit.cryptoTracker.ui.cryptoList.CryptoListFragment"
         android:label="Crypto List"
         tools:layout="@layout/fragment_report" >
         <action
             android:id="@+id/action_cryptoListFragment_to_cryptoFragment"
             app:destination="@+id/cryptoFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />/>
     </fragment>

@@ -1,4 +1,4 @@
-package org.wit.cryptoTracker.views.fragments
+package org.wit.cryptoTracker.ui.crypto
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import org.wit.cryptoTracker.R
@@ -23,15 +27,16 @@ import org.wit.cryptoTracker.models.CryptoModel
 
 class CryptoFragment : Fragment() {
 
-    lateinit var app: MainApp
+    //lateinit var app: MainApp
     private var _fragBinding: FragmentCryptoBinding? = null
-    //private lateinit var cryptoModel: CryptoModel
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private val fragBinding get() = _fragBinding!!
+    private lateinit var cryptoViewModel: CryptoViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        app = activity?.application as MainApp
+       // app = activity?.application as MainApp
         setHasOptionsMenu(true)
     }
 
@@ -42,11 +47,44 @@ class CryptoFragment : Fragment() {
 
         _fragBinding = FragmentCryptoBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        activity?.title = getString(R.string.action_donate)
+        activity?.title = getString(R.string.add_crypto)
+        setupMenu()
 
+        cryptoViewModel = ViewModelProvider(this).get(CryptoViewModel::class.java)
+        cryptoViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
+                status -> status?.let { render(status) }
+        })
         setButtonListener(fragBinding)
 
         return root;
+    }
+
+    private fun setupMenu() {
+        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+            override fun onPrepareMenu(menu: Menu) {
+                // Handle for example visibility of menu items
+            }
+
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_crypto, menu)
+            }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Validate and handle the selected menu item
+                return NavigationUI.onNavDestinationSelected(menuItem,
+                    requireView().findNavController())
+            }       }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun render(status: Boolean) {
+        when (status) {
+            true -> {
+                view?.let {
+                    //Uncomment this if you want to immediately return to Report
+                    //findNavController().popBackStack()
+                }
+            }
+            false -> Toast.makeText(context,getString(R.string.cryptoError),Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -58,10 +96,7 @@ class CryptoFragment : Fragment() {
             }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _fragBinding = null
-    }
+
     override fun onResume() {
         super.onResume()
         fragBinding.cryptoTitle.text = null
@@ -89,14 +124,14 @@ class CryptoFragment : Fragment() {
             else
                 1.0
             val total = amount.toDouble() * value
-            app.cryptos.create(
+           cryptoViewModel.addCrypto(
                 CryptoModel(
                     title = title,
                     amount = amount.toDouble(),
                     value = value,
                     total = total
                 )
-            )
+           )
             // presenter.doAddOrSave(
             // title = title,
             // amount = amount.toDouble(),
@@ -113,9 +148,12 @@ class CryptoFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragBinding = null
+    }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+   /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_crypto, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -123,5 +161,5 @@ class CryptoFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
             requireView().findNavController()) || super.onOptionsItemSelected(item)
-    }
+    }*/
 }
