@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/cryptoFragment">
+    app:startDestination="@id/cryptoListFragment">
 
     <fragment
         android:id="@+id/cryptoFragment"
@@ -24,6 +24,8 @@
         <action
             android:id="@+id/action_cryptoListFragment_to_cryptoFragment"
             app:destination="@+id/cryptoFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />/>
     </fragment>

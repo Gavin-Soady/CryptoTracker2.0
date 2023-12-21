@@ -28,6 +28,10 @@
     <string name="nav_header_title">CryptoTracker 2.2</string>
     <string name="action_report">test set</string>
     <string name="action_donate">Add Crypto</string>
+    <string name="no_crypto_added_yet">No Crypto Added Yet</string>
+    <string name="cryptoNotFound">.</string>
+    <string name="cryptoError">Error : Couldn\'t add crypto...</string>
+    <string name="add_crypto">Add Crypto</string>
 
 </resources>
 

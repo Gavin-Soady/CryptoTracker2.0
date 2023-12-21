@@ -3,21 +3,23 @@ package org.wit.cryptoTracker.ui.crypto
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.wit.cryptoTracker.models.CryptoManager
 import org.wit.cryptoTracker.models.CryptoModel
 
 
 class CryptoViewModel : ViewModel() {
 
-    private val donationsList = MutableLiveData<List<CryptoModel>>()
+    private val status = MutableLiveData<Boolean>()
 
-    val observableCryptoList: LiveData<List<CryptoModel>>
-        get() = donationsList
+    val observableStatus: LiveData<Boolean>
+        get() = status
 
-    init {
-        load()
-    }
-
-  fun load() {
-    //    donationsList.value = CryptoManager.findAll()
+    fun addCrypto(crypto: CryptoModel) {
+        status.value = try {
+            CryptoManager.create(crypto)
+            true
+        } catch (e: IllegalArgumentException) {
+            false
+        }
     }
 }

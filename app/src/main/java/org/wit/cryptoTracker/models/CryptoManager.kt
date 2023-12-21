@@ -8,7 +8,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class CryptoMemStore(val crypto: CryptoModel) : CryptoStore {
+object CryptoManager : CryptoStore {
 
     val cryptos = ArrayList<CryptoModel>()
 
