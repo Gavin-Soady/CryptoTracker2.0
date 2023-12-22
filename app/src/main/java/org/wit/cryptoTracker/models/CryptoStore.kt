@@ -9,4 +9,10 @@ interface CryptoStore {
     fun delete(crypto: CryptoModel)
     fun findById(id:Long) : CryptoModel?
 
+    companion object {
+        fun create(crypto: CryptoModel) {
+
+        }
+    }
+
 }

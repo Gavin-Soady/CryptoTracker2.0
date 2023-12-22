@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.wit.cryptoTracker.R
 import org.wit.cryptoTracker.databinding.CardCryptoBinding
 import org.wit.cryptoTracker.models.CryptoModel
 import java.text.DecimalFormat
@@ -16,9 +17,7 @@ interface CryptoListener {
                                    //private val listener: CryptoListener
 //) :
 
-class CryptoAdapter constructor(private var cryptos: List<CryptoModel>
-                                //private val listener: CryptoListener
-) :
+class CryptoAdapter constructor(private var cryptos: List<CryptoModel>) :
         RecyclerView.Adapter<CryptoAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -45,6 +44,8 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>
 
         fun bind(crypto: CryptoModel) {
             binding.cryptoTitle.text = crypto.title
+            binding.cryptoTitle.text = "Test"
+
             val df = DecimalFormat("#,###.00")
             val amount = df.format(crypto.amount)
             val total = df.format(crypto.total)
@@ -56,7 +57,10 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>
             binding.total.text = fTotal
             binding.value.text = fValue
             Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
-            //binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
+           //binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
+            //binding.crypto = crypto
+            //binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            //binding.executePendingBindings()
         }
     }
 }

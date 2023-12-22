@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.wit.cryptoTracker.R
 import org.wit.cryptoTracker.databinding.CardCryptoBinding
 import org.wit.cryptoTracker.models.CryptoModel
 import java.text.DecimalFormat
@@ -52,11 +53,19 @@ class CryptoAdapter constructor(private var cryptos: List<CryptoModel>
             val fAmount = "Amount: $amount"
             val fTotal = "Total: €$total"
             val fValue = "Price: €$value"
-            binding.amount.text = fAmount
+           // binding.amount.text = fAmount
             binding.total.text = fTotal
-            binding.value.text = fValue
-            Picasso.get().load(crypto.image).resize(200,200).into(binding.imageIcon)
+           // binding.value.text = fValue
+            val image = crypto.image.toString()
+            if(image.length > 1) {
+                Picasso.get().load(crypto.image).resize(200, 200).into(binding.imageIcon)
+            }
+            else {
+                binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            }
             //binding.root.setOnClickListener { listener.onCryptoClick(crypto,adapterPosition) }
+            binding.crypto = crypto
+            binding.executePendingBindings()
         }
     }
 }

@@ -16,39 +16,41 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Crypto"
         tools:targetApi="31">
-        <activity
-            android:name=".activities.Home"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+       <activity
+           android:name=".activities.Home"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-        </activity>
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           <meta-data
+               android:name="android.app.lib_name"
+               android:value="" />
+
+       </activity>
         <!--
-        <activity
-            android:name=".views.cryptoList.CryptoListView"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+       <activity
+           android:name=".views.cryptoList.CryptoListView"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
 
-        <activity android:name=".views.crypto.CryptoView">
-        </activity>
-        <activity
-            android:name=".views.editLocation.EditLocationView"
-            android:label="@string/title_activity_map" />-->
+           <meta-data
+               android:name="android.app.lib_name"
+               android:value="" />
+       </activity>
+
+       <activity android:name=".views.crypto.CryptoView">
+       </activity>
+       <activity
+           android:name=".views.editLocation.EditLocationView"
+           android:label="@string/title_activity_map" />-->
     </application>
 
 </manifest>

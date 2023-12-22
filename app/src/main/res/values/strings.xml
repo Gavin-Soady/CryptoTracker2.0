@@ -32,6 +32,9 @@
     <string name="cryptoNotFound">.</string>
     <string name="cryptoError">Error : Couldn\'t add crypto...</string>
     <string name="add_crypto">Add Crypto</string>
+    <string name="cryptoDetails">Crypto Details</string>
+    <string name="amt">Amount :</string>
+    <string name="total">Total :</string>
 
 </resources>
 

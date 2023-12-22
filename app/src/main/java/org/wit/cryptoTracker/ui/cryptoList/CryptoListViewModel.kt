@@ -25,4 +25,5 @@ class CryptoListViewModel : ViewModel() {
        //cryptoList.value = CryptoManager.findAll()
         //cryptoList.value = cryptos.findAll()
     }
+
 }
