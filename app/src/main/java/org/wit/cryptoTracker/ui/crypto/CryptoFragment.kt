@@ -27,7 +27,7 @@ import org.wit.cryptoTracker.models.CryptoModel
 
 class CryptoFragment : Fragment() {
 
-    //lateinit var app: MainApp
+    lateinit var app: MainApp
     private var _fragBinding: FragmentCryptoBinding? = null
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private val fragBinding get() = _fragBinding!!
@@ -36,7 +36,7 @@ class CryptoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // app = activity?.application as MainApp
+       app = activity?.application as MainApp
         setHasOptionsMenu(true)
     }
 
@@ -55,6 +55,7 @@ class CryptoFragment : Fragment() {
                 status -> status?.let { render(status) }
         })
         setButtonListener(fragBinding)
+        //setImageButtonListener(fragBinding)
 
         return root;
     }
@@ -98,6 +99,7 @@ class CryptoFragment : Fragment() {
 
 
     override fun onResume() {
+        super.onDestroyView()
         super.onResume()
         fragBinding.cryptoTitle.text = null
         fragBinding.amount.text = null
@@ -124,7 +126,7 @@ class CryptoFragment : Fragment() {
             else
                 1.0
             val total = amount.toDouble() * value
-           cryptoViewModel.addCrypto(
+           app.cryptos.create(
                 CryptoModel(
                     title = title,
                     amount = amount.toDouble(),
@@ -142,11 +144,21 @@ class CryptoFragment : Fragment() {
             //startActivity(intent)
         }
 
+    }
+
+   /* fun setImageButtonListener(layout: FragmentCryptoBinding) {
         layout.chooseImage.setOnClickListener {
 
+            cryptoViewModel.cacheCrypto(
+                    fragBinding.cryptoTitle.text.toString(),
+                    fragBinding.amount.text.toString().toDouble(),
+                    fragBinding.value.text.toString().toDouble(),
+                )
+            cryptoViewModel.doSelectImage()
+            }
 
-        }
-    }
+
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

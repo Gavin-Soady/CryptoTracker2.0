@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.wit.cryptoTracker.R
+import org.wit.cryptoTracker.adapters.CryptoClickListener
 import org.wit.cryptoTracker.databinding.FragmentReportBinding
 import org.wit.cryptoTracker.main.MainApp
 import org.wit.cryptoTracker.models.CryptoModel
@@ -48,23 +49,21 @@ class CryptoListFragment : Fragment() {
     ): View? {
         _fragBinding = FragmentReportBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        setupMenu()
         activity?.title = "Crypto List"
 
         fragBinding.recyclerView.setLayoutManager(LinearLayoutManager(activity))
-        fragBinding.recyclerView.adapter = CryptoAdapter(app.cryptos.findAll())
-
+        fragBinding.recyclerView.adapter = CryptoAdapter(app.cryptos.findAll(),)
         cryptoListViewModel = ViewModelProvider(this).get(CryptoListViewModel::class.java)
         cryptoListViewModel.observableCryptoList.observe(viewLifecycleOwner, Observer {
-                donations ->
-            donations?.let { render(donations) }
+                cryptos ->
+            cryptos?.let { render(cryptos) }
         })
 
         val fab: FloatingActionButton = fragBinding.fab
         fab.setOnClickListener {
-           // val action = ReportFragmentDirections.actionCrytoListFragmentToDonateFragment()
-            // val action = CryptoListFragmentDirections.
+         //  val action = CryptoListFragmentDirections.
            // findNavController().navigate(action)
+
         }
 
 
@@ -123,3 +122,5 @@ class CryptoListFragment : Fragment() {
     }
 
 }
+
+
